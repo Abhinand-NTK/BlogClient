@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-ink-50 text-ink-900 antialiased dark:bg-ink-950 dark:text-ink-100;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  ::selection {
+    @apply bg-brand-500/20;
+  }
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ink-100 dark:bg-ink-800;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .glass {
+    @apply border border-white/40 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-ink-900/60;
+  }
+  .card-surface {
+    @apply rounded-2xl border border-ink-100 bg-white shadow-soft dark:border-white/10 dark:bg-ink-900;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-500 via-accent-500 to-highlight-500 bg-clip-text text-transparent;
+  }
+  .focus-ring {
+    @apply outline-none ring-brand-500/50 ring-offset-2 ring-offset-white focus-visible:ring-2 dark:ring-offset-ink-950;
+  }
+}
+
+/* Loading skeleton shimmer */
+.skeleton {
+  @apply relative overflow-hidden bg-ink-100 dark:bg-ink-800;
+}
+.skeleton::after {
+  content: '';
+  @apply absolute inset-0 -translate-x-full;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.35),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+.dark .skeleton::after {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.06),
+    transparent
+  );
+}
+
+/* Rich article typography tweaks handled by @tailwindcss/typography prose classes */
+.prose :where(pre) {
+  @apply rounded-xl border border-white/10 !bg-ink-950;
+}
+.prose :where(a) {
+  @apply text-brand-600 no-underline hover:underline dark:text-brand-400;
+}

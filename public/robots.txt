@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# Update the host to your deployed backend that serves the dynamic sitemap.
+Sitemap: https://your-backend.onrender.com/sitemap.xml
