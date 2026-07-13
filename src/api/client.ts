@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 
 /** Centralised Axios instance. Base URL comes from the environment. */
 export const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ?? 'https://blogcraft-api-wa2w.onrender.com',
+  baseURL: import.meta.env.VITE_API_URL ?? 'https://blogcraft-api-wa2w.onrender.com/api',
   timeout: 20000,
   headers: { 'Content-Type': 'application/json' },
 });
